@@ -1,14 +1,16 @@
 import pygame
-import os
 from scripts.game import Game
 from scripts.functions import load_image
+from scripts.constants import display_size
+from scripts.constants import Createplatformevent
+
 class App:
     def __init__(self) :
-        self.display_size = (480, 720)
+
         self.running = True
         self.maxFPS = 60
 
-        self.display = pygame.display.set_mode(self.display_size)
+        self.display = pygame.display.set_mode(display_size)
         self.clock = pygame.time.Clock()
         self.game = Game()
 
@@ -23,6 +25,8 @@ class App:
                 self.game.handle_key_down_event(event.key)
             elif event.type == pygame.KEYUP:
                 self.game.handle_key_up_event(event.key)
+            elif event.type == Createplatformevent:
+                self.game.handle_create_platforms_event(event.platform)
             
 
     def update(self):
