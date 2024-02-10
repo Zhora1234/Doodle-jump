@@ -3,6 +3,7 @@ from scripts.constants import display_size
 class Player(Sprite):
     def __init__(self,center,image,jump_power,speed,gravity):
         super().__init__(center,image)
+        self.original_image = image.copy()
         self.jump_power = jump_power
         self.speed = speed
         self.gravity = gravity
@@ -27,3 +28,9 @@ class Player(Sprite):
             self.rect.right = 0
     def collide_sprite(self,other):
         return super().collide_sprite(other) and self.velocity_y > 0
+    def reset(self,center):
+        super().__init__(center,self.original_image)
+        self.is_walking_right = False
+        self.is_walking_left = False
+        self.velocity_y = 0
+        self.on_platform = False
