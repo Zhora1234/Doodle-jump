@@ -1,5 +1,5 @@
 def main() -> None:
-    import pygame, sys
+    import pygame
     from scripts.app import App
 
     pygame.init()
@@ -7,6 +7,6 @@ def main() -> None:
     app.run()
     pygame.quit()
 
+
 if __name__ == "__main__":
     main()
-
